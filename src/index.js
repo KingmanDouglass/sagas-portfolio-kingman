@@ -41,7 +41,7 @@ function* getProject(action) {
     try {
       console.log('GET projects', action);
       const getResponse = yield axios.get('/project'); //not sure what the url should be
-      const action = {type:'SET_PROJECT', payload: getResponse.data};
+      const action = {type:'SET_PROJECTS', payload: getResponse.data};
       yield put(action);
    }catch (error) {
       console.log(`Couldn't get projects`, error);

@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header'
+import ProjectList from '../ProjectList/ProjectList'
 
 class Home extends Component {
 
-    componentDidMount() {
-        this.props.dispatch( { type: 'GET_PROJECT'})
-    }
-
     render() {
-        const {classes} = this.props;
         return (
-            <section className="background">
+            <div>
             <Header/>
-            <div className="feelings">
-              <h1>Kingman Reed Douglass</h1>
-              <h3>Put Project One Here</h3>
-              {this.props.reduxState.projects.map(project => (
-                  <div>
-                  <p>{project.name}</p>
-                  </div>
-              ))}
+            <ProjectList/>
             </div>
-            </section>
         )
     }
 }
