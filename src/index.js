@@ -9,11 +9,9 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import axios from 'axios'
+import { takeEvery, put } from 'redux-saga/effects'
 
-// Create the rootSaga generator function
-function* rootSaga() {
-
-}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -38,6 +36,54 @@ const tags = (state = [], action) => {
     }
 }
 
+// GET
+function* getProject(action) {
+    try {
+      console.log('GET projects', action);
+      const getResponse = yield axios.get('/project'); //not sure what the url should be
+      const action = {type:'SET_PROJECT', payload: getResponse.data};
+      yield put(action);
+   }catch (error) {
+      console.log(`Couldn't get projects`, error);
+      alert(`Sorry, couldn't get the projects. Try again later`);
+    };
+  };
+  
+  // POST
+  function* addProject(action) {
+    try {
+      console.log('add project', action);
+      yield axios.post('/project', action.payload);
+      yield put({ type: 'GET_PROJECT' });
+    } catch (error) {
+      console.log(`Couldn't add the project`, error);
+      alert(`Sorry, couldn't add the project. Try again later`);
+    };
+  };
+
+  //DELETE
+  function* deleteProject(action) {
+    try {
+      console.log(action.payload);
+      
+      console.log('delete project', action.payload);
+      yield axios.delete(`/project/${action.payload}`);
+      yield put({ type: 'GET_PROJECT' });
+    } catch (error) {
+      console.log(`Couldn't delete the project`, error);
+      alert(`Sorry, couldn't delete the project. Try again later`);
+    };
+  };
+
+function* watcherSaga() {
+// this will watch actions and send them to other sagas 
+// yield takeEvery()
+    yield takeEvery('GET_PROJECT', getProject);
+    yield takeEvery('ADD_PROJECT', addProject);
+    yield takeEvery('DELETE_PROJECT', deleteProject);
+}
+  
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
@@ -49,7 +95,7 @@ const storeInstance = createStore(
 );
 
 // Pass rootSaga into our sagaMiddleware
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
     document.getElementById('root'));
