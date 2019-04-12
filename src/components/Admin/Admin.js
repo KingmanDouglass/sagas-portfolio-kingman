@@ -13,10 +13,10 @@ class Home extends Component {
         return (
             <div>
             <Header/>
-            <div>
+            <section>
               <h1>Admin</h1>
               <ProjectForm/>
-            </div>
+            </section>
             </div>
         )
     }

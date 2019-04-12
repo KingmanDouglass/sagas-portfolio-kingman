@@ -7,7 +7,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="App">
             <Header/>
             <ProjectList/>
             </div>

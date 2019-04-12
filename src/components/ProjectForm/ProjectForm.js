@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
+    },
+    dense: {
+      marginTop: 19,
+    },
+    menu: {
+      width: 200,
+    },
+  });
+
 class ProjectForm extends Component {
+    
     state = {
         newProject: {
             name: '',
@@ -17,16 +41,25 @@ class ProjectForm extends Component {
         }
     }
 
-    handleChangeFor = event => {
-        let propertyName = event.target.name;
-        console.log("Property name is", propertyName);
+    // handleChangeFor = event => {
+    //     let propertyName = event.target.name;
+    //     console.log("Property name is", propertyName);
+    //     this.setState({
+    //       newProject: {
+    //         ...this.state.newProject,
+    //         [propertyName]: event.target.value
+    //       }
+    //     });        
+    //   };
+
+    handleChange = propertyName => event => {
         this.setState({
-          newProject: {
-            ...this.state.newProject,
-            [propertyName]: event.target.value
-          }
-        });        
-      };
+            project: {
+                ...this.state.project,
+                [propertyName]: event.target.value,
+            }
+        })
+}
 
     addNewProject = event => {
         event.preventDefault();
@@ -45,13 +78,57 @@ class ProjectForm extends Component {
 
 
 render() {
+    const { classes } = this.props;
     return (
         <div>
-            <form onSubmit={this.addNewProject}>
-                <label>Name</label>
+            <form className={classes.container} noValidate autoComplete="off">
+                {/* <label>Name</label>
                 <input type='text' name="name" value={this.state.newProject.name} onChange={this.handleChangeFor} />
-                <br />
-                <label>Description</label>
+                <br /> */}
+
+
+                <TextField
+                    label="Name"
+                    className={classes.textField}
+                    value={this.state.newProject.name}
+                    onChange={this.handleChange('name')}
+                    margin="normal"
+                    />
+
+                <TextField
+                    label="Description"
+                    className={classes.textField}
+                    value={this.state.newProject.description}
+                    onChange={this.handleChange('description')}
+                    margin="normal"
+                    />
+
+                <TextField
+                    label="Thumbnail"
+                    className={classes.textField}
+                    value={this.state.newProject.thumbnail}
+                    onChange={this.handleChange('thumbnail')}
+                    margin="normal"
+                    />
+
+                <TextField
+                    label="Website"
+                    className={classes.textField}
+                    value={this.state.newProject.website}
+                    onChange={this.handleChange('website')}
+                    margin="normal"
+                    />
+
+                <TextField
+                    label="Github"
+                    className={classes.textField}
+                    value={this.state.newProject.github}
+                    onChange={this.handleChange('github')}
+                    margin="normal"
+                    />
+
+
+                {/* <label>Description</label>
                 <input type='text' name="description" value={this.state.newProject.description} onChange={this.handleChangeFor} />
                 <br />
                 <label>Thumbnail</label>
@@ -64,9 +141,10 @@ render() {
                 <input type='text' name="github" value={this.state.newProject.github} onChange={this.handleChangeFor} />
                 <br />
                 <label>Date Completed</label>
-                <input type='text' name="date_completed" value={this.state.newProject.date_completed} onChange={this.handleChangeFor} />
+                <input type='date' name="date_completed" value={this.state.newProject.date_completed} onChange={this.handleChangeFor} />
                 <br/>
-                <input type='submit' value='Add New Project' />
+                <input type='submit' value='Add New Project' /> */}
+              
             </form>
         </div>
     );
@@ -74,4 +152,4 @@ render() {
 }
 
 
-export default connect(mapStateToProps)(ProjectForm);
+export default connect(mapStateToProps)(withStyles(styles)(ProjectForm));
