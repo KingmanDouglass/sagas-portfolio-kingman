@@ -11,6 +11,25 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+const currencies = [
+    {
+      value: 'USD',
+      label: '$',
+    },
+    {
+      value: 'EUR',
+      label: '€',
+    },
+    {
+      value: 'BTC',
+      label: '฿',
+    },
+    {
+      value: 'JPY',
+      label: '¥',
+    },
+  ];
+
 const styles = theme => ({
     container: {
       display: 'flex',
@@ -33,13 +52,14 @@ class ProjectForm extends Component {
     
     state = {
         newProject: {
+            id: '',
             name: '',
             description: '',
             thumbnail: '',
             website: '',
             github: '',
             date_completed: '',
-            tag_id: ''
+            tag_id: 5
         }
     }
 
@@ -68,13 +88,14 @@ class ProjectForm extends Component {
         this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject })
         this.setState({
             newProject: {
+                id: '',
                 name: '',
                 description: '',
                 thumbnail: '',
                 website: '',
                 github: '',
                 date_completed: '',
-                tag_id: ''
+                tag_id: 5
             }
         });
 }
@@ -141,6 +162,20 @@ render() {
                     shrink: true,
                         }}
                 />
+
+<TextField
+                        select
+                        label="Select A Tag"
+                        className={classes.textField}
+                        value={this.state.newProject.tag_id}
+                        onChange={this.handleChange('tag_id')}
+                        SelectProps={{
+                            MenuProps: {
+                                className: classes.menu,
+                            },
+                        }}
+                        margin="normal"
+/>
 
 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewProject}>Submit</Button>
 

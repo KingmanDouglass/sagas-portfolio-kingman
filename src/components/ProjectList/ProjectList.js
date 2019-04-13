@@ -49,6 +49,7 @@ componentDidMount() {
               <h3>Put Project One Here</h3>
               {this.props.reduxState.projects.map(project => (
                   <Card className={classes.card}>
+                  <p>{project.id}</p>
                   <img className={classes.cardDiv} height='200' width='200'src={project.thumbnail} alt={project.name} />
                   <div className={classes.cardDiv}>
                     <p>{project.tag_id}</p>

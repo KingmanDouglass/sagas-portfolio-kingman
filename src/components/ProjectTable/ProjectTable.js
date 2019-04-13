@@ -21,7 +21,12 @@ const styles = theme => ({
     },
   });
 
+
 class ProjectTable extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_PROJECTS' });
+}
 
     // handleDelete = (event) => {
     //     this.props.dispatch({
@@ -29,8 +34,8 @@ class ProjectTable extends Component {
     //         payload: project.id
     // })
 
-    handleDelete = event => {
-        this.props.dispatch({ type: 'DELETE_PROJECT', payload: this.project.id })
+    handleDelete = (project) => {
+        this.props.dispatch({ type: 'DELETE_PROJECT', payload: project.name })
 }
  
 
@@ -51,7 +56,7 @@ class ProjectTable extends Component {
               <TableCell component="th" scope="row">
                 {project.name}
               </TableCell>
-              <Button variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
+              <Button variant="contained" color="primary" className={classes.button} onClick={()=>{this.handleDelete(project)}}>Delete</Button>
             </TableRow>
           ))}
         </TableBody>

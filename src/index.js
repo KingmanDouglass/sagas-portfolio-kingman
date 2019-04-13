@@ -40,7 +40,7 @@ const tags = (state = [], action) => {
 function* getProject(action) {
     try {
       console.log('GET projects', action);
-      const getResponse = yield axios.get('/project'); //not sure what the url should be
+      const getResponse = yield axios.get('/project');
       const action = {type:'SET_PROJECTS', payload: getResponse.data};
       yield put(action);
    }catch (error) {

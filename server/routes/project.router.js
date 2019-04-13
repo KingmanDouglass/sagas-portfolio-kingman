@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
   console.log(req.body);
   
   const queryText = `INSERT INTO projects ("name", "description", "thumbnail", "website", "github", "date_completed", "tag_id")
-  VALUES ($1, $2, $3, $4, $5, $6)`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
   const queryValues = [
     newProject.name,
     newProject.description,
@@ -28,6 +28,7 @@ router.post('/', (req, res) => {
     newProject.website,
     newProject.github,
     newProject.date_completed,
+    newProject.tag_id,
   ];
   pool.query(queryText, queryValues)
     .then(() => { res.sendStatus(201); })
@@ -41,8 +42,8 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   console.log(`delete project`, req.params.id);
   
-  const queryText = 'DELETE FROM "projects" WHERE id=$1';
-  pool.query(queryText, [req.params.id])
+  const sqlText = 'DELETE FROM "projects" WHERE name=$1';
+  pool.query(sqlText, [req.params.id])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
       console.log('Error deleting SELECT plant query', err);
