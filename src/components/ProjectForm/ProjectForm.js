@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -38,6 +39,7 @@ class ProjectForm extends Component {
             website: '',
             github: '',
             date_completed: '',
+            tag_id: ''
         }
     }
 
@@ -54,8 +56,8 @@ class ProjectForm extends Component {
 
     handleChange = propertyName => event => {
         this.setState({
-            project: {
-                ...this.state.project,
+            newProject: {
+                ...this.state.newProject,
                 [propertyName]: event.target.value,
             }
         })
@@ -65,13 +67,14 @@ class ProjectForm extends Component {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject })
         this.setState({
-            newPlant: {
+            newProject: {
                 name: '',
                 description: '',
                 thumbnail: '',
                 website: '',
                 github: '',
                 date_completed: '',
+                tag_id: ''
             }
         });
 }
@@ -126,7 +129,20 @@ render() {
                     onChange={this.handleChange('github')}
                     margin="normal"
                     />
+            
+                <TextField
+                    label="Date Completed"
+                    type="date"
+                    value={this.state.newProject.date_completed}
+                    className={classes.textField}
+                    onChange={this.handleChange('date_completed')}
+                    margin="normal"
+                    InputLabelProps={{
+                    shrink: true,
+                        }}
+                />
 
+<Button variant="contained" color="primary" className={classes.button} onClick={this.addNewProject}>Submit</Button>
 
                 {/* <label>Description</label>
                 <input type='text' name="description" value={this.state.newProject.description} onChange={this.handleChangeFor} />

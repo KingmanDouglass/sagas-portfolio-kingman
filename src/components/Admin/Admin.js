@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header'
 import ProjectForm from '../ProjectForm/ProjectForm.js';
+import ProjectTable from '../ProjectTable/ProjectTable.js';
 
 class Home extends Component {
 
@@ -16,6 +17,7 @@ class Home extends Component {
             <section>
               <h1>Admin</h1>
               <ProjectForm/>
+              <ProjectTable/>
             </section>
             </div>
         )

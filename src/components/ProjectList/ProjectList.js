@@ -51,7 +51,7 @@ componentDidMount() {
                   <Card className={classes.card}>
                   <img className={classes.cardDiv} height='200' width='200'src={project.thumbnail} alt={project.name} />
                   <div className={classes.cardDiv}>
-                    <p>{project.name}</p>
+                    <p>{project.tag_id}</p>
                     <p>{project.description}</p>
                     <a href={project.github} >GitHub</a>
                     <a href={project.website}>Website</a>
