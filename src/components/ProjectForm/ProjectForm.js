@@ -60,9 +60,13 @@ class ProjectForm extends Component {
             website: '',
             github: '',
             date_completed: '',
-            tag_id: 5
+            tag_id: '',
         }
     }
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_TAGS' });
+}
 
     // handleChangeFor = event => {
     //     let propertyName = event.target.name;
@@ -96,7 +100,7 @@ class ProjectForm extends Component {
                 website: '',
                 github: '',
                 date_completed: '',
-                tag_id: 5
+                tag_id: '',
             }
         });
 }
@@ -177,7 +181,13 @@ render() {
                             },
                         }}
                         margin="normal"
-/>
+                    >
+                        {this.props.reduxState.tags.map(tags => (
+                            <MenuItem key={tags.id} value={tags.id}>
+                            {tags.name}
+                            </MenuItem>
+                        ))}
+</TextField>
 
 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewProject}>Submit</Button>
 

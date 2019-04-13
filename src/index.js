@@ -52,12 +52,12 @@ function* getProject(action) {
   function* getTags(action) {
     try{
         console.log('GET tags for projects', action);
-        const getResponse = yield axios.get('/portfolio/tags');
+        const getResponse = yield axios.get('/project/tags');
         const action = {type: 'SET_TAGS', payload: getResponse.data};
         yield put(action);
     }catch (error) {
-        console.log(`Couldn't get projects`);
-        alert(`Sorry couldn't get projects. Try again later.`)
+        console.log(`Couldn't get the tags`);
+        alert(`Sorry couldn't get the tags. Try again later.`)
     }
 }
   

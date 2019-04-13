@@ -15,6 +15,17 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/tags', (req, res) => {
+  console.log('Getting all projects');
+  pool.query(`SELECT * FROM "tags"`)
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting tags', error);
+      res.sendStatus(500);
+  })
+})
+
 router.post('/', (req, res) => {
   const newProject = req.body;
   console.log(req.body);
