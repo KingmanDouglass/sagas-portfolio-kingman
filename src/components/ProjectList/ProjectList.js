@@ -9,8 +9,10 @@ import Header from '../Header/Header'
 
 const styles = {
   card: {
-    minWidth: 350,
-    minHeight:350,
+    minWidth: 450,
+    minHeight:450,
+    maxWidth: 450,
+    maxHeight:450,
     margin: 10,
     padding: 10,
     display: "inline-block",
@@ -52,6 +54,7 @@ componentDidMount() {
                   <p>{project.id}</p>
                   <img className={classes.cardDiv} height='200' width='200'src={project.thumbnail} alt={project.name} />
                   <div className={classes.cardDiv}>
+                  <p>{project.name}</p>
                     <p>{project.tag_id}</p>
                     <p>{project.description}</p>
                     <a href={project.github} >GitHub</a>
