@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+
 const mapStateToProps = reduxState => ({
     reduxState,
 });
@@ -105,6 +106,7 @@ render() {
     const { classes } = this.props;
     return (
         <div>
+             
             <form className={classes.container} noValidate autoComplete="off">
                 {/* <label>Name</label>
                 <input type='text' name="name" value={this.state.newProject.name} onChange={this.handleChangeFor} />

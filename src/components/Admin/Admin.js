@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../Header/Header'
 import ProjectForm from '../ProjectForm/ProjectForm.js';
 import ProjectTable from '../ProjectTable/ProjectTable.js';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
 
@@ -14,6 +15,7 @@ class Home extends Component {
         return (
             <div>
             <Header/>
+            <Link to="/">Home</Link>
             <section>
               <h1>Admin</h1>
               <ProjectForm/>

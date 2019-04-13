@@ -48,6 +48,18 @@ function* getProject(action) {
       alert(`Sorry, couldn't get the projects. Try again later`);
     };
   };
+
+  function* getTags(action) {
+    try{
+        console.log('GET tags for projects', action);
+        const getResponse = yield axios.get('/portfolio/tags');
+        const action = {type: 'SET_TAGS', payload: getResponse.data};
+        yield put(action);
+    }catch (error) {
+        console.log(`Couldn't get projects`);
+        alert(`Sorry couldn't get projects. Try again later.`)
+    }
+}
   
   // POST
   function* addProject(action) {
@@ -81,6 +93,7 @@ function* watcherSaga() {
     yield takeEvery('GET_PROJECT', getProject);
     yield takeEvery('ADD_PROJECT', addProject);
     yield takeEvery('DELETE_PROJECT', deleteProject);
+    yield takeEvery('GET_TAGS', getTags);
 }
   
 
