@@ -5,9 +5,25 @@
 
 .App-header {
   background-color: #222;
-  height: 70px;
+  height: 100px;
   padding: 20px;
   color: white;
+  font-size: small;
 }
 
+.description {
+  font-size: medium;
+}
 
+.tag {
+  font-size: small;
+}
+
+.name {
+  font-size: xx-large;
+}
+
+.mainDiv {
+  text-align: center;
+  background-image: url(binary.png);
+}

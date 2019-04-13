@@ -5,6 +5,7 @@ import { FormHelperText } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Header from '../Header/Header'
+import { lightGreen } from '@material-ui/core/colors';
 
 
 const styles = {
@@ -16,6 +17,7 @@ const styles = {
     margin: 10,
     padding: 10,
     display: "inline-block",
+    backgroundColor: 'lightGrey'
  
   },
   cardDiv: {
@@ -45,21 +47,17 @@ componentDidMount() {
     render() {
         const { classes } = this.props;
         return (
-            <div>
-            <Header/>
-              <h1>Kingman Reed Douglass</h1>
-              <h3>Put Project One Here</h3>
+            <div className="mainDiv">
               {this.props.reduxState.projects.map(project => (
-                  <Card className={classes.card}>
+                <Card className={classes.card}>
                   <p>{project.id}</p>
                   <img className={classes.cardDiv} height='200' width='200'src={project.thumbnail} alt={project.name} />
                   <div className={classes.cardDiv}>
-                  <p>{project.name}</p>
-                    <p>{project.tag_id}</p>
-                    <p>{project.description}</p>
-                    <a href={project.github} >GitHub</a>
-                    <a href={project.website}>Website</a>
-                  </div>
+                  <p className="name">{project.name} <span className="tag">{project.tag_id}</span></p>
+                  <p className="description">{project.description}</p>
+                  <a className="link" href={project.github} >GitHub</a> 
+                  <a className="link" href={project.website}>Website</a>
+              </div>
                 </Card>
               ))}
             </div>
