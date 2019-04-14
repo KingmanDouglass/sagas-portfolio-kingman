@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Moment from 'react-moment';
 
 //material ui styles
 const styles = {
@@ -73,6 +74,9 @@ conditionalWebsite = () => {
                    </Typography>
                    <Typography component="p">
                      {this.props.project.description}
+                   </Typography>
+                   <Typography component="p">
+                     Date Completed: <Moment format="YYYY/MM/DD" date={this.props.project.date_completed}/>
                    </Typography>
                  </CardContent>
                </CardActionArea>
