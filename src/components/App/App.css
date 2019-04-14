@@ -25,5 +25,20 @@
 
 .mainDiv {
   text-align: center;
-  background-image: url(binary.png);
+  background-image: url(code.png);
+}
+
+.enter {
+  background-image: url(matrix.jpeg);
+  height: 800px;
+  background-size: cover;
+  text-align: center;
+  vertical-align: middle
+}
+
+.wrong {
+  background-image: url(Sad.jpg);
+  height: 800px;
+  background-size: cover;
+  text-align: center;
 }
