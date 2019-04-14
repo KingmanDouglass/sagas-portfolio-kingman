@@ -14,6 +14,7 @@ const styles = {
     },
   };
 
+  //header being shown across mediums. Displays name and background image
 class Header extends Component {
 
     render() {

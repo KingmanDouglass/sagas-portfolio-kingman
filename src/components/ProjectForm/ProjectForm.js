@@ -10,7 +10,7 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-
+//material ui styles
 const styles = theme => ({
     container: {
       display: 'flex',
@@ -30,24 +30,25 @@ const styles = theme => ({
   });
 
 class ProjectForm extends Component {
-    
+   //establish state 
     state = {
         newProject: {
             id: '',
             name: '',
-            description: '',
-            thumbnail: '',
-            website: '',
-            github: '',
+            description: null,
+            thumbnail: null,
+            website: null,
+            github: null,
             date_completed: '',
             tag_id: '',
         }
     }
-
+//dispatch to get the list of all the tags available from the database
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_TAGS' });
 }
 
+//as changes occur, set the inputs to be linked up appropriatly with the state associated
     handleChange = propertyName => event => {
         this.setState({
             newProject: {
@@ -57,6 +58,7 @@ class ProjectForm extends Component {
         })
 }
 
+//on the cick of submit, send the ADD_PROJECT dispatch out with a new state of the information from the project
     addNewProject = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject })
@@ -70,7 +72,7 @@ render() {
              
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField
-                    label="Name"
+                    label="Name (required)"
                     className={classes.textField}
                     value={this.state.newProject.name}
                     onChange={this.handleChange('name')}
@@ -110,7 +112,7 @@ render() {
                     />
             
                 <TextField
-                    label="Date Completed"
+                    label="Date Completed (required)"
                     type="date"
                     value={this.state.newProject.date_completed}
                     className={classes.textField}
@@ -123,7 +125,7 @@ render() {
 
                 <TextField
                         select
-                        label="Select A Tag"
+                        label="Select A Tag (required)"
                         className={classes.textField}
                         value={this.state.newProject.tag_id}
                         onChange={this.handleChange('tag_id')}
@@ -140,7 +142,7 @@ render() {
                             </MenuItem>
                         ))}
                 </TextField>
-                
+
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewProject}>Submit</Button>          
             </form>
         </div>

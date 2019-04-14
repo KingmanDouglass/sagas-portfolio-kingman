@@ -36,7 +36,8 @@ const tags = (state = [], action) => {
     }
 }
 
-// GET
+// GET all the information - sending to the db
+//takes what is dispatched when a payload is sent and sends to server
 function* getProject(action) {
     try {
       console.log('GET projects', action);
@@ -49,6 +50,8 @@ function* getProject(action) {
     };
   };
 
+  //gets all the tags from the db
+  //posts into tags when a drop down is selected in admin
   function* getTags(action) {
     try{
         console.log('GET tags for projects', action);
@@ -61,7 +64,7 @@ function* getProject(action) {
     }
 }
   
-  // POST
+  // POST new entry from the admin page
   function* addProject(action) {
     try {
       console.log('add project', action);
@@ -73,7 +76,7 @@ function* getProject(action) {
     };
   };
 
-  //DELETE
+  //DELETE entry on the admin page
   function* deleteProject(action) {
     try {
       console.log(action.payload);
@@ -87,6 +90,7 @@ function* getProject(action) {
     };
   };
 
+  //watches and gives chain of command for asychronous functions
 function* watcherSaga() {
 // this will watch actions and send them to other sagas 
 // yield takeEvery()

@@ -12,6 +12,7 @@ const styles = theme => ({
   },
 });
 
+//just a photo of sad Keanu
 class Home extends Component {
 
 nextPage = (event) => {

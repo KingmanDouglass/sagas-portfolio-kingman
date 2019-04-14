@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+//material ui styles
 const styles = theme => ({
     root: {
       width: '100%',
@@ -20,17 +21,18 @@ const styles = theme => ({
     },
   });
 
-
+//displays all the information from the database and does a map to acquire all the tag inputs
 class ProjectTable extends Component {
 
+//get all the information from the database as well as retrigger upon delete
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_PROJECTS' });
 }
 
+//when delete is clicked, dispatch request to remove from database
     handleDelete = (project) => {
         this.props.dispatch({ type: 'DELETE_PROJECT', payload: project.name })
 }
- 
 
     render() {
         const { classes } = this.props;

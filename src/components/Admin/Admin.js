@@ -5,12 +5,9 @@ import ProjectForm from '../ProjectForm/ProjectForm.js';
 import ProjectTable from '../ProjectTable/ProjectTable.js';
 import {Link} from 'react-router-dom';
 
-
+//admin home page to set up links to form and table
+//calls get GET to be able to pass the database information
 class Home extends Component {
-
-    componentDidMount() {
-        this.props.dispatch( { type: 'GET_PROJECT'})
-    }
 
     render() {
         return (

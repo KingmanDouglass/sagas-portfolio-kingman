@@ -14,25 +14,27 @@ const styles = theme => ({
 
 class Home extends Component {
 
+  //take us to home page
 nextPage = (event) => {
     this.props.history.push('/Home')
 }
 
+  //take us to wrong answer page
 wrongPage = (event) => {
     this.props.history.push('/Wrong')
 }
 
+//displays two buttons
     render() {
         const { classes } = this.props;
         return (
             <div className="enter">
-              <Button onClick={this.wrongPage} variant="contained" color="primary" className={classes.button}>
+              <Button onClick={this.wrongPage} variant="contained" color="secondary" className={classes.button}>
                 Red Pill
               </Button>
               <Button onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>
                 Blue Pill
               </Button>
-              {/* <button onClick={this.nextPage}>Let's Do This Thang</button> */}
             </div>
         )
     }

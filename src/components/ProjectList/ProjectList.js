@@ -9,7 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
+//material ui styles
 const styles = {
   card: {
     minWidth: 950,
@@ -32,6 +32,30 @@ const styles = {
 };
 
 class ProjectList extends Component {
+
+  //if there is no thumbnail, use the default
+  conditionalThumbnail = () => {
+    if (this.props.project.thumbnail === null) {
+        return 'images/github.png';
+    }
+    else {
+        return this.props.project.thumbnail
+    }
+};
+
+//if there is no github address, disable the button
+conditionalGithub = () => {
+  if (this.props.project.github === null) {
+      return true;
+  }
+}
+
+//if there is no website address, disable the button
+conditionalWebsite = () => {
+    if (this.props.project.website === null) {
+        return true;
+    }
+}
     
     render() {
         const { classes } = this.props;
@@ -41,7 +65,7 @@ class ProjectList extends Component {
                <CardActionArea>
                  <CardMedia
                    className={classes.media}
-                   image={this.props.project.thumbnail}
+                   image={this.conditionalThumbnail()}
                  />
                  <CardContent>
                    <Typography className={classes.name} gutterBottom variant="h5" component="h2">
@@ -54,12 +78,12 @@ class ProjectList extends Component {
                </CardActionArea>
                <CardActions>
                <div className="github">
-                 <Button href={this.props.project.github} variant="contained" size="small" color="secondary" >
+                 <Button href={this.props.project.github} disabled={this.conditionalGithub()} variant="contained" size="small" color="secondary" >
                             GitHub
                 </Button>
                 </div>
                 <div className="website">
-                 <Button href={this.props.project.website} variant="contained" size="small" color="primary">
+                 <Button href={this.props.project.website} disabled={this.conditionalWebsite()} variant="contained" size="small" color="primary">
                    Website
                  </Button>
                  </div>

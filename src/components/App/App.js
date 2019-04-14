@@ -7,9 +7,11 @@ import Home from '../Home/Home.js';
 import Enter from '../Enter/Enter.js';
 import Wrong from '../Wrong/Wrong.js';
 
-
+//set up basic format
+//main screen is enter page with two possible routes
+//eventually gets us either to admin upon typing in url or HOME
 class App extends Component {
-  // Renders the entire app on the DOM
+  
   render() {
     return (
        <Router>
