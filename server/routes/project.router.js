@@ -57,7 +57,7 @@ router.delete('/:id', (req, res) => {
   pool.query(sqlText, [req.params.id])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
-      console.log('Error deleting SELECT plant query', err);
+      console.log('Error deleting SELECT project query', err);
       res.sendStatus(500);
     });
 });

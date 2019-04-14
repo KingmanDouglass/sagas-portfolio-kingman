@@ -12,24 +12,6 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-const currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
 
 const styles = theme => ({
     container: {
@@ -91,18 +73,18 @@ class ProjectForm extends Component {
     addNewProject = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject })
-        this.setState({
-            newProject: {
-                id: '',
-                name: '',
-                description: '',
-                thumbnail: '',
-                website: '',
-                github: '',
-                date_completed: '',
-                tag_id: '',
-            }
-        });
+        // this.setState({
+        //     newProject: {
+        //         id: '',
+        //         name: '',
+        //         description: '',
+        //         thumbnail: '',
+        //         website: '',
+        //         github: '',
+        //         date_completed: '',
+        //         tag_id: '',
+        //     }
+        // });
 }
 
 

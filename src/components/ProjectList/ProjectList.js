@@ -13,9 +13,9 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    minWidth: 550,
+    minWidth: 950,
     minHeight:580,
-    maxWidth: 550,
+    maxWidth: 950,
     maxHeight:580,
     margin: 10,
     padding: 10,
@@ -30,13 +30,16 @@ const styles = {
     fontWeight: 700,
     color: "black",
 },
+// github: {
+//   textAlign: center,
+// },
+// website: {
+//   textAlign: center,
+// },
 };
 
 class ProjectList extends Component {
     
-componentDidMount() {
-    this.props.dispatch( { type: 'GET_PROJECT'})
-}
 
 // handleDelete = (plant) => {
 //     this.props.dispatch({
@@ -49,35 +52,37 @@ componentDidMount() {
     render() {
         const { classes } = this.props;
         return (
-            <div className="mainDiv">
-              {this.props.reduxState.projects.map(project => (
+            <div>
+              {/* {this.props.reduxState.projects.map(project => ( */}
                <Card className={classes.card}>
                <CardActionArea>
                  <CardMedia
                    className={classes.media}
-                   image={project.thumbnail}
+                   image={this.props.project.thumbnail}
                  />
                  <CardContent>
                    <Typography className={classes.name} gutterBottom variant="h5" component="h2">
-                     {project.name}<span className="tag"> {project.tag_id}</span>
+                     {this.props.project.name}<span className="tag"> {this.props.project.tag_id}</span>
                    </Typography>
                    <Typography component="p">
-                     {project.description}
+                     {this.props.project.description}
                    </Typography>
                  </CardContent>
                </CardActionArea>
                <CardActions>
-                 <Button size="small" color="primary">
-                 <Button href={project.github} variant="contained" size="small" color="secondary" >
+               <div className="github">
+                 <Button href={this.props.project.github} variant="contained" size="small" color="secondary" >
                             GitHub
                 </Button>
-                 </Button>
-                 <Button href={project.website} variant="contained" size="small" color="primary">
+                </div>
+                <div className="website">
+                 <Button href={this.props.project.website} variant="contained" size="small" color="primary">
                    Website
                  </Button>
+                 </div>
                </CardActions>
              </Card>
-              ))}
+              {/* ))} */}
             </div>
         );
     }

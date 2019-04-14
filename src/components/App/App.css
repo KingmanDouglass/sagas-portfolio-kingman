@@ -20,6 +20,14 @@
   font-size: small;
 }
 
+.github {
+  text-align: left;
+}
+
+.website {
+  text-align: right;
+}
+
 .name {
   font-size: xx-large;
 }

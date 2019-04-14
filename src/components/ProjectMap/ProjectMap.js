@@ -10,11 +10,11 @@ class ProjectMap extends Component {
 
     render() {
     return (
-      <section>
+      <div>
             {this.props.reduxState.projects.map(project =>
                 <ProjectList key={project.id} project={project}/>
             )}
-      </section>
+      </div>
     );
   }
 }

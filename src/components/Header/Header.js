@@ -26,7 +26,7 @@ class Header extends Component {
         Kingman Reed Douglass
         </Typography>
         <Typography className={classes.info} variant="h5" gutterBottom>
-        kingmanrdouglass@gmail.com (847) 777-9964
+        KINGMANRDOUGLASS@GMAIL.COM (847) 777-9964
         </Typography>
         </header>
         </div>
