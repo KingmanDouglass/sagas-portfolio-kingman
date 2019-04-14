@@ -7,6 +7,7 @@ import Home from '../Home/Home.js';
 import Enter from '../Enter/Enter.js';
 import Wrong from '../Wrong/Wrong.js';
 
+
 class App extends Component {
   // Renders the entire app on the DOM
   render() {

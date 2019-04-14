@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { FormHelperText } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Header from '../Header/Header'
-import { lightGreen } from '@material-ui/core/colors';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 const styles = {
   card: {
-    minWidth: 450,
-    minHeight:450,
-    maxWidth: 450,
-    maxHeight:450,
+    minWidth: 550,
+    minHeight:580,
+    maxWidth: 550,
+    maxHeight:580,
     margin: 10,
     padding: 10,
     display: "inline-block",
-    backgroundColor: 'lightGrey'
  
   },
-  cardDiv: {
-      margin: "0 auto 0 auto",
-      display: "flex",
-      flexDirection: "column",
-      alignContent: "center",
-      textAlign: "center"
-     
-  }
-}
+  media: {
+    height: 400,
+  },
+  name: {
+    borderBottom: `10px solid black`,
+    fontWeight: 700,
+    color: "black",
+},
+};
 
 class ProjectList extends Component {
     
@@ -49,16 +51,32 @@ componentDidMount() {
         return (
             <div className="mainDiv">
               {this.props.reduxState.projects.map(project => (
-                <Card className={classes.card}>
-                  <p>{project.id}</p>
-                  <img className={classes.cardDiv} height='200' width='200'src={project.thumbnail} alt={project.name} />
-                  <div className={classes.cardDiv}>
-                  <p className="name">{project.name} <span className="tag">{project.tag_id}</span></p>
-                  <p className="description">{project.description}</p>
-                  <a className="link" href={project.github} >GitHub</a> 
-                  <a className="link" href={project.website}>Website</a>
-              </div>
-                </Card>
+               <Card className={classes.card}>
+               <CardActionArea>
+                 <CardMedia
+                   className={classes.media}
+                   image={project.thumbnail}
+                 />
+                 <CardContent>
+                   <Typography className={classes.name} gutterBottom variant="h5" component="h2">
+                     {project.name}<span className="tag"> {project.tag_id}</span>
+                   </Typography>
+                   <Typography component="p">
+                     {project.description}
+                   </Typography>
+                 </CardContent>
+               </CardActionArea>
+               <CardActions>
+                 <Button size="small" color="primary">
+                 <Button href={project.github} variant="contained" size="small" color="secondary" >
+                            GitHub
+                </Button>
+                 </Button>
+                 <Button href={project.website} variant="contained" size="small" color="primary">
+                   Website
+                 </Button>
+               </CardActions>
+             </Card>
               ))}
             </div>
         );

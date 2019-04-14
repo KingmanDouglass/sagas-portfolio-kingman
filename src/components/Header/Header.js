@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+
+const styles = {
+    name: {
+        borderBottom: `10px solid white`,
+        fontWeight: 700,
+        color: "white",
+    },
+    info: {
+        fontWeight: 900,
+        color: "white",
+    },
+  };
 
 class Header extends Component {
 
     render() {
+        const { classes } = this.props;
         return (
         <div className="App">
         <header className="App-header">
-        <h1>Kingman Reed Douglass</h1>
-        <h3>Prime Portfolio</h3>
-        <h5>e-mail: kingmanrdouglass@gmail.com * phone: (847) 777-9964</h5>
+        <Typography className={classes.name} variant="h2" gutterBottom>
+        Kingman Reed Douglass
+        </Typography>
+        <Typography className={classes.info} variant="h5" gutterBottom>
+        kingmanrdouglass@gmail.com (847) 777-9964
+        </Typography>
         </header>
         </div>
         )
     }
 }
 
-export default Header;
+
+
+export default withStyles(styles)(Header);
