@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -27,12 +26,6 @@ class ProjectTable extends Component {
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_PROJECTS' });
 }
-
-    // handleDelete = (event) => {
-    //     this.props.dispatch({
-    //         type: "DELETE_PROJECT",
-    //         payload: project.id
-    // })
 
     handleDelete = (project) => {
         this.props.dispatch({ type: 'DELETE_PROJECT', payload: project.name })

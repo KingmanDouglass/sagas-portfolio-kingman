@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -30,30 +29,14 @@ const styles = {
     fontWeight: 700,
     color: "black",
 },
-// github: {
-//   textAlign: center,
-// },
-// website: {
-//   textAlign: center,
-// },
 };
 
 class ProjectList extends Component {
     
-
-// handleDelete = (plant) => {
-//     this.props.dispatch({
-//         type: "DELETE_PROJECT",
-//         payload: project.id
-//     })
-// }
- 
-
     render() {
         const { classes } = this.props;
         return (
             <div>
-              {/* {this.props.reduxState.projects.map(project => ( */}
                <Card className={classes.card}>
                <CardActionArea>
                  <CardMedia
@@ -82,7 +65,6 @@ class ProjectList extends Component {
                  </div>
                </CardActions>
              </Card>
-              {/* ))} */}
             </div>
         );
     }
@@ -93,17 +75,3 @@ const mapStateToProps = reduxState => ({
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(ProjectList));
-
-
-
-
-{/* <div>
-                  <p>{project.name}</p>
-                  <p>{project.description}</p>
-                  <img src={project.thumbnail}></img>
-                  <br/>
-                  <a href={project.github} >GitHub</a>
-                  <br/>
-                  <a href={project.website}>Website</a>
-                  <p>{project.date_completed}</p>
-                  </div> */}
