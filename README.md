@@ -42,14 +42,14 @@ VALUES ('React'), ('jQuery'), ('Node'), ('SQL'), ('Redux'), ('HTML');
 
 - [X ] Client side route that displays a form allowing you to add a new project to your portfolio
 - [X ] Include a drop down menu with a list of tags
-- [ ] Send data to the server and notify the user of success or failure
+- [X ] Send data to the server and notify the user of success or failure
 - [X ] List projects by name and allow the user to delete them
 - [X ] Include a button that navigates to the project page
 
 ### General Tasks
 
-- [ ] Commit your code frequently! You should have at 15+ commits on a project of this size. Use branches to help break down your features.
-- [ ] Comment your code.
+- [X ] Commit your code frequently! You should have at 15+ commits on a project of this size. Use branches to help break down your features.
+- [X ] Comment your code.
 - [X ] Update this README to include a description of the project in your own words.
 
 ## Wireframes
@@ -68,6 +68,6 @@ VALUES ('React'), ('jQuery'), ('Node'), ('SQL'), ('Redux'), ('HTML');
 ## Stretch Goals
 
 - [ ] Use the GitHub API to get user information to display at the top of the page
-- [ ] Improve styling on the page using Material UI
+- [X ] Improve styling on the page using Material UI
 - [ ] Include a form on the admin page for adding new tags
 - [ ] Implement additional features of the GitHub API

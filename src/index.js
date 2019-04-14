@@ -69,6 +69,7 @@ function* getProject(action) {
     try {
       console.log('add project', action);
       yield axios.post('/project', action.payload);
+      alert ('Victory!');
       yield put({ type: 'GET_PROJECT' });
     } catch (error) {
       console.log(`Couldn't add the project`, error);
